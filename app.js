@@ -67,18 +67,12 @@ app.use(session({
   cookie: { maxAge: sessionTime }
 }))
 
-// db.connect((err) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log('MongoDB connected');
-//   }
-// })
-
-db.connect()
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
+db.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('MongoDB connected');
+  }
 })
 
 app.use('/', Router);
