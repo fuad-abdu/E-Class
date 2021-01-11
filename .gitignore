@@ -1,9 +1,3 @@
-public/note/*
-
-public/announcement/*
-
-public/event/*
-
 # Logs
 logs
 *.log
