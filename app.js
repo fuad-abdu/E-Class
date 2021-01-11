@@ -71,10 +71,9 @@ db.connect((err) => {
   if (err) {
     console.log(err);
   } else {
-    console.log('MongoDB connected');
+    console.log('connected');
   }
 })
-
 app.use('/', Router);
 app.use('/users', usersRouter);
 
