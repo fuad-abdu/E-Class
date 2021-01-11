@@ -331,7 +331,7 @@ module.exports = function (io) {
     let file = req.files.file
     if (topic && file) {
       let assignment = await tutorHelpers.UploadAssignment(topic);
-      file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
+      file.mv('/assignments/tutor/' + topic + '.pdf', (err, done) => {
         if (err) console.log(err);
       })
       alert("Successfully added Assignment");
