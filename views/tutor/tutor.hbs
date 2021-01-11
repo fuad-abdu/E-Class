@@ -1,0 +1,106 @@
+<section>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-6 col-12 ">
+
+                <div class="card" style="width:450px; height: 410px;">
+                    <img style="opacity: 0.5;" class="card-img-top"
+                        src="https://miro.medium.com/max/5087/1*ZVYpEAxnObj7kWNnyKr_nQ.jpeg" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title text-center">Announcements</h4>
+                        {{#each announcement}}
+                        <p class="card-text mt-4"><a href="/announcement-details/{{this._id}}">* {{this.message}}</a>
+                            <span>( {{this.date}} )</span>
+                        </p>
+                        {{/each}}
+                        {{!-- <a href="#" class="btn btn-primary mt-3">View</a> --}}
+                    </div>
+                </div>
+            </div>
+            <div class=" col-lg-6 col-12 mb-2">
+                <div class="card " style="width:450px; height: 410px;">
+                    <img style="opacity: 0.3; width:450px; height: 410px;" class="card-img-top"
+                        src="https://www.adweek.com/wp-content/uploads/2018/06/Events.jpg" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title text-center">Events</h4>
+                        {{#each events}}
+                        <p class="card-text mt-4"><a href="/event-details/{{this._id}}">* {{this.event}}</a> </p>
+                        {{/each}}
+                        {{!-- <a href="#" class="btn btn-primary mt-3">View</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark" id="footer">
+    <div class="container">
+        <div class="row text-center text-white">
+            <div class="col-md-12 mt-1">
+                <p>Contact Details</p>
+            </div>
+            <div class="col-md-4 col-6 mt-2">
+                <h5>Principal : 9876543210</h5>
+            </div>
+            <div class="col-md-4 col-6 mt-2">
+                <h5>HOD : 9876543210</h5>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <h5>Tutor : 9023428921</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+<style>
+    body {
+        margin: 0;
+        margin-bottom: 0;
+        background-image: url('/Background_Images/home_bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+
+    footer {
+        width: 100%;
+        height: 83px;
+        margin-top: 47px;
+    }
+
+    .card,
+    .card-img-top {
+        border-radius: 20px;
+    }
+
+    h4 {
+        font-size: 45px;
+    }
+
+    .row {
+        font-size: 18px;
+    }
+
+    #footer {
+
+        bottom: 0px;
+        width: 100%;
+        height: 90px;
+        z-index: 1;
+    }
+
+    .card-text {
+        font-weight: 700;
+    }
+
+    a {
+        color: red;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: smaller;
+        color: gray;
+    }
+</style>

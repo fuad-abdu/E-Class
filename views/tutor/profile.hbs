@@ -1,0 +1,94 @@
+<style>
+    body {
+        background-image: url('/Background_Images/blue.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 60px;
+    }
+
+    label {
+        font-family: Monospace;
+        color: #fff;
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    .img {
+        width: 260px;
+    }
+
+    .btn {
+        margin-top: 17px;
+        font-size: 20px;
+        width: 100px;
+    }
+
+    .answer {
+        color: rgb(255, 209, 4);
+    }
+
+    .profile-pic {
+        position: relative;
+        display: inline-block;
+    }
+
+    .profile-pic:hover .edit {
+        display: block;
+    }
+
+    .edit {
+        border:  4px solid;
+        background: rgb(235, 235, 235);
+        width: 80px;
+        margin: auto;
+        position: absolute;
+        right: 35%;
+        top: 40%;
+        display: none;
+    }
+</style>
+<section>
+    <div class="container">
+        <h2 class="text-center mt-5 pt-5">Profile</h2>
+        <div class="row mt-5">
+            <div class="col-md-6 text-center mt-2">
+                <div class="profile-pic">
+                    <img class="img" src="/tutor-profile/profile.jpg" alt=""
+                        style="width: 300px; border-radius: 200px;">
+                    <div class="edit">
+                        <a href="/edit-profile">
+                            <img class="text-center" src="https://img.icons8.com/android/48/000000/edit.png" />
+                        </a>                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+                <label for="">Name : </label>
+                <label name="name" class="answer" for="">{{details.details.name}}</label><br>
+                <label for="">Job : </label>
+                <label name="job" class="answer" for="">{{details.details.job}}</label><br>
+                <label for="">Class :</label>
+                <label name="class" class="answer" for="">{{details.details.class}}</label><br>
+                <label for="">Address :</label>
+                <label name="address" class="answer" for="">{{details.details.address}}</label><br>
+                <label for="">Pin :</label>
+                <label name="pin" class="answer" for="">{{details.details.pin}}</label><br>
+                <label for="">Mobile :</label>
+                <label name="mobile" class="answer" for="">{{details.details.mobile}}</label><br>
+                <label for="">Email :</label>
+                <label name="email" class="answer" for="">{{details.details.email}}</label>
+            </div>
+
+            <div class="col-md-12 text-center mb-4 mt-4">
+                <a href="/edit-profile" class="btn btn-danger">Edit</a>
+            </div>
+        </div>
+    </div>
+</section>

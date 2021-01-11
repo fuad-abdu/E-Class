@@ -1,0 +1,251 @@
+<style>
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    dl,
+    dt,
+    dd,
+    ol,
+    nav ul,
+    nav li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+        display: block;
+    }
+
+    ol,
+    ul {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    blockquote,
+    q {
+        quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+        content: '';
+        content: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    /* start editing from here */
+    a {
+        text-decoration: none; 
+    }
+
+    .txt-rt {
+        text-align: right;
+    }
+
+    /* text align right */
+    .txt-lt {
+        text-align: left;
+    }
+
+    /* text align left */
+    .txt-center {
+        text-align: center;
+    }
+
+    /* text align center */
+    .float-rt {
+        float: right;
+    }
+
+    /* float right */
+    .float-lt {
+        float: left;
+    }
+
+    /* float left */
+    .clear {
+        clear: both;
+    }
+
+    /* clear float */
+    .pos-relative {
+        position: relative;
+    }
+
+    /* Position Relative */
+    .pos-absolute {
+        position: absolute;
+    }
+
+    /* Position Absolute */
+    .vertical-base {
+        vertical-align: baseline;
+    }
+
+    /* vertical align baseline */
+    .vertical-top {
+        vertical-align: top;
+    }
+
+    /* vertical align top */
+    nav.vertical ul li {
+        display: block;
+    }
+
+    /* vertical menu */
+    nav.horizontal ul li {
+        display: inline-block;
+    }
+
+    /* horizontal menu */
+    img {
+        max-width: 100%;
+    }
+
+    h3 {
+        font-size: xx-large;
+        color: white;
+    }
+</style>
+
+<header class="mb-5" style="position: fixed; width: 100%;  left: 0px; top: 0px; z-index:1;">
+    
+
+    <nav class="navbar navbar-light bg-dark">
+        {{#if name}}
+        <a class="navbar-brand text-white" href="/student" style="font-size: 33px; font-family: Sofia;">
+            <img src="/images/LOGO-removebg-preview.png" width="65" height="65"
+                class="d-inline-block align-top" alt="">Hi{{name.name}}
+        </a>
+        {{/if}}
+
+        {{#if user}}
+        <a class="navbar-brand text-white" href="/student" style="font-size: 33px; font-family: Sofia;">
+            <img src="/images/LOGO-removebg-preview.png" width="80" height="80"
+                class="d-inline-block align-top" alt="">
+            Hi{{user.name}}
+        </a>
+        {{/if}}
+
+        {{#if status}}
+        <h3 class="mr-5 pr-5 text-white">Present</h3>
+        {{else}}
+        <h3 class="mr-5 pr-5 text-white">Absent</h3>
+        {{/if}}
+
+        <div class=" wrapper-demo my-1 my-sm-1">
+            <!-----start-wrapper-dropdown-2---->
+            <div id="dd" class="wrapper-dropdown-2 my-2 my-sm-0" tabindex="1">
+                <span><img src="/images/menu.png" /></span>
+                <ul class="dropdown">
+                    <li><a href="/student">Home </a></li>
+                    <li><a href="/today-task">Today'sTask</a></li>
+                    <li><a href="/attendance">Attendance</a></li>
+                    <li><a href="/student-assignment">Assignments</a></li>
+                    <li><a href="/student-announcement">Announcements</a></li>
+                    <li><a href="/student-notes">Notes</a></li>
+                    <li><a href="/student-profile">Profile</a></li>
+                    <li><a href="/student-photos">Photos</a></li>
+                    <li><a href="/student-logout">LogOut</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    
+
+</header>

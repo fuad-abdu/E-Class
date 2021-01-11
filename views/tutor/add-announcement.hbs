@@ -1,0 +1,113 @@
+<style>
+    body {
+        background-image: url('/Background_Images/light_green.jpg');
+        background-size: cover;
+        background-position: center center;
+        font-family: Monospace;
+    }
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .label {
+        color: rgb(122, 85, 16);
+        font-weight: 900;
+        font-size: 30px;
+    }
+
+    .label-1 {
+        color: rgb(122, 85, 16);
+        font-weight: 900;
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .label-2 {
+        color: rgb(122, 85, 16);    
+        font-weight: 900;
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .label-3 {
+        font-weight: 700;
+        font-size: 30px;
+        margin-top: 20px;
+        color: rgb(122, 85, 16);
+    }
+
+    input {
+        font-size: x-large;
+        height: 40px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+
+    .message {
+        margin-left: 67px;
+    }
+
+    .description {
+        margin-top: 10px;
+    }
+
+    .btn {
+        font-size: x-large;
+        width: 100px;
+    }
+</style>
+
+<section>
+    <div class="container mt-5">
+        <h2 class="text-center mt-5 pt-5">Add Announcement</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/addAnnouncement" method="POST" enctype="multipart/form-data" class="mt-5 pt-4">
+                    <div class="">
+                        <label class="label" for="">Message :</label>
+                        <input class="message mx-auto" type="text" name="message" id="message"
+                            placeholder=" Message" required><br>
+                    </div>
+                    <div class="">
+                        <label class="label" for="">Description :</label>
+                        <input class="description" type="text" name="description" id="description"
+                            placeholder=" Description" required>
+                    </div>
+                    <div class="">
+                        <label class="label-1" for="">PDF : </label>
+                        <input class="form-control" type="file" accept="application/pdf" name="pdf" id="pdf" >
+                    </div>
+                    <div class="">
+                        <label class="label-2" for="">Video : </label>
+                        <input class="form-control" type="file" accept="video/*" name="video" id="video" >
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <label class="label-3" for="">Image : </label>
+                            <input class="form-control" type="file" onchange="viewImage(event)" accept="image/*"
+                                name="image" id="" >
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-6 text-center mt-5">
+                <img src="" class="" style="margin-top: 100px; width: 50%; margin-bottom: 20px;" id="image" alt="">
+            </div>
+
+            <div class="col-md-12 text-center mt-4 mb-5">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+            
+        </div>
+    </div>
+</section>
+<script>
+    function viewImage(event) {
+        document.getElementById('image').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

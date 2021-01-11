@@ -1,0 +1,120 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        {{!-- background-repeat: no-repeat; --}}
+        background-position: center center;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .div {
+        padding: 50px;
+        width: 500px;
+        height: 300px;
+        margin: auto;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        width: 300px;
+        height: 35px;
+    }
+
+    .form-control {
+        margin: auto;
+        margin-left: 75px;
+        margin-bottom: 30px;
+        width: 300px;
+        height: 45px;
+    }
+
+    label {
+        margin-top: 20px;
+        font-size: x-large;
+    }
+
+    .btn {
+        font-size: larger;
+        width: 100px;
+        height: 40px;
+    }
+</style>
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center mt-2">Add Photos</h2>
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <div class="div bg-warning">
+                    <form action="/add-photos" method="POST" enctype="multipart/form-data">
+                        <label for="">Name :</label>
+                        <input type="text" name="name" id="name"><br>
+
+                        <label for="">File : </label>
+                        <input class="form-control" type="file" value="" name="img" id="img" accept="image/*">
+
+                        <input type="text" name="base64data" value="" id="base64data" hidden>
+
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-success" value="Upload" name="" id="">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 text-center mt-4">
+                <img src="" id="image" alt="">
+                <button id="button" class="mt-3 mx-auto btn btn-danger">Save</button>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function ($) {
+        var button = document.getElementById("button");
+        button.style.display = "none";
+        $("input[name='img']").on("change", function () {
+            var image = document.getElementById("image");
+            var img = document.getElementById("base64data");
+
+            var files = $(this)[0].files
+            var file = files[0]
+            $("#image").attr("src", window.URL.createObjectURL(file))
+            button.style.display = "block";
+            let cropper = new Cropper(image, {
+                aspectRatio: 1
+            })
+            cropper.crop();
+            $("button").on("click", function () {
+                var canvas = cropper.getCroppedCanvas({
+                    width: 300,
+                    height: 300
+                });
+
+                canvas.toBlob(function (blob) {
+
+                    url = URL.createObjectURL(blob);
+
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function () {
+                        var base64data = reader.result;
+                        console.log(base64data);
+                        image.src = base64data;
+                        img.value = base64data;
+                    }
+                })
+
+                cropper.destroy();
+                cropper = null;
+
+            })
+        })
+    })
+</script>

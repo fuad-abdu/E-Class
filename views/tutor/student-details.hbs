@@ -1,0 +1,106 @@
+<style>
+    body {
+        background-image: url('/Background_Images/yellow.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .tab {
+        font-size: x-large;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        text-align: center;
+        padding: 8px;
+        font-size: 25px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    .btn {
+        font-size: x-large;
+    }
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+        font-size: large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
+</style>
+
+<section>
+    <div class="container mt-5 pt-4 ">
+        <h2 class="text-center mt-5">Student List</h2>
+        <div class="">
+            <a href="/add-student" class="btn btn-primary mt-5">Add Student</a>
+            <div class=" mt-5 pt-2">
+                <table class="table" id="myTable">
+                    <thead class="bg-danger">
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each StudentDetails}}
+                        <tr class="bg-info">
+                            <td class="text-white">{{this.rollno}}</td>
+                            <td><a style="text-decoration: none; color: rgb(255, 255, 255);"
+                                    href="/student-assignment-details/{{this._id}}">{{this.name}}</a></td>
+                            <td>
+                                <a href="/edit-student/{{this._id}}"><img style="width: 40px; margin-right: 10px;"
+                                        src="https://img.icons8.com/android/48/ffffff/edit.png" alt=""></a>
+                            </td>
+                            <td>
+                                <a href="/delete-student/{{this._id}}" onclick="alert('Are you sure')"><img
+                                        style="width: 40px; margin-left: 10px;" src="https://img.icons8.com/ios/48/ffffff/delete-forever.png" alt=""></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,120 @@
+<style>
+    body {
+        background: linear-gradient(to left, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        color: #fff;
+    }
+
+    .div {
+        width: 400px;
+        height: 500px;
+        background: rgba(252, 254, 255, 0.11);
+        ;
+        padding: 50px;
+    }
+
+    p {
+        color: #fff;
+        font-size: large;
+        padding-top: 20%;
+    }
+
+    .otp {}
+
+    .form-control {
+        margin-top: 50px;
+        color: #ffffff;
+        font-weight: 100;
+        width: 100%;
+        font-size: 1em;
+        font-weight: 400;
+        letter-spacing: 2px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: rgba(0, 0, 0, 0.32);
+    }
+
+    .btn {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    #confirm {
+        width: 100%;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-4 text-center">
+                <div class="div mt-5 mx-auto">
+
+                    <p class="">Please Enter Your Phone Number</p>
+                    {{#if numberErr}}
+                    <p class="text-white">Wrong number</p>
+                    {{/if}}
+                    <input class="otp form-control" type="text" name="number" id="number" placeholder="Phone Number"
+                        required><br>
+                    <button class="otp btn btn-dark" onclick="generateOtp()">Send OTP</button>
+                    {{!-- <div id="confirm" style="display: none;" class="col-9 alert alert-success ">OTP has sended to
+                        you
+                        number</div> --}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- <p>Please enter your phone number (in international format, starting with +) to receive a verification code:
+    </p>
+    <form method="post" action="/step2">
+        <input type="tel" name="number" />
+        <input type="submit" value="Send code" />
+    </form> --}}
+</section>
+
+<script>
+    let generateOtp = function () {
+        let number = document.getElementById('number').value
+        //let confirm = document.getElementById('confirm')
+        if (number) {
+            $.ajax({
+                url: '/send-otp',
+                method: 'post',
+                data: { number: number },
+                success: (response) => {
+                    if (response.status) {
+                        console.log('otp generted ' + number)
+                        //confirm.style.display = 'block'
+                        var otp = prompt("Please enter OTP");
+                        if (otp == null || otp == "") {
+                            alert('you have cancelled activation')
+                            location.reload()
+                        } else {
+                            verifyOtp(otp)
+                        }
+                    }
+                }
+            })
+        }else{
+            alert("Please Enter Your Number")
+            location.reload()
+        }
+    }
+    let verifyOtp = function (otp) {
+        $.ajax({
+            url: '/verify-otp',
+            method: 'post',
+            data: { otp: otp },
+            success: (response) => {
+                if (response.status) {
+                    alert('success')
+                    location.href = '/student'
+                } else {
+                    console.log(response.error)
+                    alert('Invaid OTP code')
+                }
+            }
+        })
+    }
+</script>

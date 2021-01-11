@@ -1,0 +1,207 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_green.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    label {
+        font-size: x-large;
+        margin-top: 10px;
+    }
+
+    input {
+        font-size: 20px;
+        height: 40px;
+        width: 100%;
+        outline: none;
+        border: none;
+    }
+
+
+    .form {
+        color: #fff;
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        padding: 5%;
+    }
+
+    thead {
+        font-size: xx-large;
+        font-weight: 900;
+    }
+
+    tbody {
+        font-size: x-large;
+        font-weight: 600;
+    }
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+        font-size: large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        width: 200px;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
+</style>
+
+<section>
+    <div class="container ">
+        <h2 class="text-center text-white mt-5 pt-5">Notes</h2>
+        <div class="row ">
+            <div class="col-md-12 mt-2 mb-5">
+                <div class="form bg-danger mt-5 pt-3 mb-3">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <div class="">
+                            <label for="">Topic :</label>
+                            <input type="text" name="topic" id="topic"><br>
+                        </div>
+                        <div class="">
+                            <label for="" id="fileid">Note :</label>
+                            <input class="form-control" type="file" name="note" id="note" accept="application/pdf"><br>
+                        </div>
+                        <div class="">
+                            <label for="" id="fileid">Video :</label>
+                            <input class="form-control" type="file" name="video" id="video" accept="video/*"><br>
+                        </div>
+
+                        <div class="">
+                            <label for="">Youtube link :</label>
+                            <input class="mb-3" style="" type="text" name="link" id="link"><br>
+                        </div>
+
+                        <div class="text-center">
+                            <button onclick="submitClicked()" class="btn btn-success">UPLOAD</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 mb-5">
+                <table id="myTable" class="table text-center mt-5">
+                    <thead class="bg-info">
+                        <tr>
+                            <th>Topic</th>
+                            <th>Note</th>
+                            <th>Video</th>
+                            <th>Youtube</th>
+                            <th>Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each notes}}
+                        <tr class="bg-warning">
+                            <td class="text-danger">{{this.notes.topic}}</td>
+                            <td><a href=""
+                                    onclick="window.open('/note/notes/{{this.notes.topic}}.pdf')">{{this.notes.topic}}.pdf</a>
+                            </td>
+                            <td><a href=""
+                                 class="text-success" onclick="window.open('/note/videos/{{this.notes.topic}}.mp4')">{{this.notes.topic}}.mp4</a>
+                            </td>
+                            {{#if this.notes.link}}
+                            <td class="text-info">
+                                <a href="{{this.notes.link}}">Click here</a>
+                            </td>
+                            {{else}}
+                            <td class="text-info">
+                                No Data
+                            </td>
+                            {{/if}}
+                            <td class="text-white">{{this.notes.date}}/{{this.notes.month}}/{{this.notes.year}}</td>
+                            <td>
+                                <a href="/delete-note/{{this._id}}" onclick="alert('Are You Sure')">
+                                    <img style="width: 50px; margin-left: 10px;" src="/images/1814090-64.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function submitClicked() {
+        let topic = document.getElementById('topic').value;
+
+        if (document.getElementById("topic").value) {
+            let topic = document.getElementById("topic").value;
+        } else {
+            alert('Must want topic, note, video')
+            location.reload()
+            console.log('no value')
+            let topic = null;
+        }
+
+        if (document.getElementById("note").files.length == 0) {
+            alert('Must want topic, note, video')
+            location.reload()
+            console.log("no files selected");
+            let note = null;
+        } else {
+            console.log('selceted')
+            let note = document.getElementById("note").files;
+        }
+
+        if (document.getElementById("video").files.length == 0) {
+            alert('Must want topic, note, video')
+            location.reload()
+            console.log("no files selected");
+            let video = null;
+        } else {
+            console.log('seelceted')
+            let video = document.getElementById("video").files;
+        }
+
+        if (document.getElementById("link").value) {
+            console.log("value");
+            let link = document.getElementById("link").value;
+        } else {
+            console.log('no value')
+            let link = null;
+            //let video = document.getElementById("video").files;
+        }
+
+        $.ajax({
+            url: '/tutor-notes',
+            method: 'post',
+            data: {
+                topic: topic,
+                note: note,
+                video: video,
+                link: link
+            },
+            success: (response) => {
+                location.reload()
+            }
+
+        })
+    }
+</script>

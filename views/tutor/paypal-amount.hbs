@@ -1,0 +1,74 @@
+<style>
+    body {
+        background: rgb(53, 50, 50);
+    }
+
+    .div {
+        padding: 20px;
+        padding-top: 80px;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        background: rgb(78, 78, 73);
+    }
+
+    label {
+        font-size: larger;
+        font-weight: 700;
+        margin-bottom: 30px;
+
+    }
+
+    input {
+        width: 100%;
+        font-size: large;
+        height: 40px;
+        text-align: center;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+    }
+</style>
+<section>
+    <div class="container mt-5 pt-5">
+        <div class="row mt-5">
+            <div class="col-md-12 text-center mt-5">
+                <div class="div text-white">
+
+                    <form action="/paypal-verify" method="POST">
+                        <label for="">Enter Amount</label><br>
+                        <input type="text" placeholder=" Amount" name="amount" id="amount">
+                        <button onclick="submit('{{eventId}}', {{status}})"
+                            class="btn btn-success mt-4">Checkout</button>
+                        <input type="text" value="{{eventId}}" name="eventId" id="" hidden>
+                        <input type="text" value="{{status}}" name="status" id="" hidden>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    function submit(eventId, status) {
+        var amount = document.getElementById('amount').value;
+
+        $.ajax({
+            url: '/paypal-verify',
+            method: 'post',
+            data: {
+                eventId: eventId,
+                paymentGateway: status,
+                amount: amount
+            },
+            success: () => {
+                alert('ready')
+            }
+        }
+        })
+
+    }
+
+</script>

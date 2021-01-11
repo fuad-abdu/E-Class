@@ -1,0 +1,224 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+    h5 {
+        font-size: x-large;
+        font-weight: 800;
+    }
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .label {
+        color: rgb(228, 9, 9);
+        font-weight: 900;
+        font-size: 30px;
+    }
+
+    .label-1 {
+        color: rgb(228, 9, 9);
+        font-weight: 900;
+        font-size: 30px;
+        margin-right: 135px;
+        margin-top: 1   0px;
+    }
+
+    .label-2 {
+        color: rgb(228, 9, 9);
+        font-weight: 900;
+        font-size: 30px;
+        margin-right: 115px;
+        margin-top: 10px;
+    }
+
+    .label-3 {
+        color: rgb(228, 9, 9);
+        font-weight: 700;
+        font-size: 30px;
+        margin-right: 110px;
+        margin-top: 20px;
+    }
+
+    input {
+        font-size: larger;
+        height: 40px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        outline: none;
+    }
+
+    .event {
+        margin-left: 115px;
+    }
+
+    .conducting-by {
+        margin-top: 10px;
+    }
+
+    .topic {
+        margin-left: 120px;
+    }
+
+    .btn1 {
+        font-size: large;
+
+        margin: auto;
+        width: 90%;
+    }
+
+    progress {
+        width: 280px;
+        height: 40px;
+        margin-left: 210px;
+        margin-top: 20px;
+    }
+
+    #message {
+        font-size: larger;
+        margin-left: 210px;
+    }
+
+    .rad {
+        width: 20px;
+
+    }
+
+    .radio-inline {
+        margin-top: -7px;
+        color: #fff;
+        font-size: x-large;
+    }
+
+    #upload-progress {
+        visibility: hidden;
+    }
+
+    #upload-progress.visible {
+        visibility: visible;
+    }
+</style>
+
+<section>
+    <div class="container mt-5">
+        <h2 class="text-center mt-5 pt-5">Events</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/addEvent" method="POST" enctype="multipart/form-data" class="mt-5 pt-4">
+                    <div class="">
+                        <label class="label" for="">Event :</label>
+                        <input class="event mx-auto" type="text" name="event" id="event" required><br>
+                    </div>
+                    <div class="">
+                        <label class="label" for="">Conducting by :</label>
+                        <input class="conducting-by mx-auto" type="text" name="conductingBy" id="conducting-by"
+                            required>
+                    </div>
+                    <div class="">
+                        <label class="label" for="">Topic :</label>
+                        <input class="topic mx-auto" type="text" name="topic" id="topic" required>
+                    </div>
+                    <div class="">
+                        <label class="label-1" for="">PDF : </label>
+                        <input class="form-control" type="file" accept="application/pdf" name="pdf" id="pdf">
+                    </div>
+
+                    <label class="label-2" for="">Video : </label>
+                    <input class="form-control" type="file" accept="video/*" name="video" id="video">
+                    <progress id="upload-progress"></progress><br>
+                    <p id="message"></p>
+
+                    <div class="">
+                        <label class="label-3" for="">Image : </label>
+                        <input class="form-control" type="file" onchange="viewImage(event)" accept="image/*"
+                            name="image" >
+                    </div>
+
+
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="" class="" style="margin-top: 150px; width: 50%; margin-bottom: 20px;" id="image" alt=""><br>
+            </div>
+            <div class="col-md-12 ">
+                <div class="col" style=" margin-top: 39px; margin-right: 70px; ">
+                    <div class="container checkout">
+                        <div class="bg-warning border border-primary mt-5 mb-5"
+                            style="border:solid; margin: auto; height: 250px; width: 350px; padding-top: 10px; padding-left: 10px;">
+                            <h5 class="text-center">Paid or Free</h5>
+
+                            <hr>
+
+                            <div>
+                                <label class="radio-inline ml-3">
+                                    <input type="radio" class="rad" name="payment" value="free" id="free" required>
+                                    Free
+                                </label>
+                            </div>
+                            <div>
+                                <label class="radio-inline ml-3">
+                                    <input type="radio" class="rad" name="payment" value="paid" id="paid" required>
+                                    Paid
+                                </label>
+                            </div>
+
+                            <button href="#" type="submit"
+                                class="btn1 btn btn-danger mr-4 float-right">Checkout</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
+<script>
+    function viewImage(event) {
+        document.getElementById('image').src = URL.createObjectURL(event.target.files[0])
+    }
+
+    let fileInput, uploadProgress, message;
+
+    function init() {
+        fileInput = document.getElementById("video");
+        uploadProgress = document.getElementById("upload-progress");
+        message = document.getElementById("message");
+
+        fileInput.addEventListener('change', function () {
+            let xhr = new XMLHttpRequest(),
+                fd = new FormData();
+
+            fd.append("file", fileInput.files[0]);
+
+            xhr.upload.onloadstart = function (e) {
+                uploadProgress.classList.add("visible");
+                uploadProgress.value = 0;
+                uploadProgress.max = e.total;
+                message.textContent = "Uploading......"
+            }
+            xhr.upload.onprogress = function (e) {
+                uploadProgress.value = e.loaded;
+                uploadProgress.max = e.total;
+            }
+            xhr.upload.onloadend = function (e) {
+                uploadProgress.classList.remove("visible");
+                message.textContent = "Uploading Completed"
+            }
+
+            xhr.open("POST", "/upload-video", true);
+            xhr.send(fd)
+
+        })
+    }
+
+    init();
+</script>

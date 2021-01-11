@@ -1,0 +1,145 @@
+<style>
+    body{
+        background-image: url('/Background_Images/yellow.jpg');
+        background-size: cover;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .h3 {
+        font-family: Monospace;
+        font-size: 40px;
+        color: black;
+    }
+
+    .card {
+        font-family: Monospace;
+        height: 80%;
+    }
+
+    .card-title {
+        font-size: 25px;
+        color: black;
+    }
+
+    .card-body {
+        margin: 0%;
+    }
+
+    a {
+        width: 40%;
+    }
+
+    p {
+        color: #fff;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <h2 class="text-center mt-5 pt-5">Today's Task</h2>
+        <div class="row mt-5">
+
+            {{#if notes}}
+            <div class="col-lg-4 mt-4 mb-4 text-center">
+                <h3 class="h3">Video</h3>
+                <div class="card bg-primary mt-5 mx-auto" style="width: 18rem;">
+                    {{!-- <img class="card-img-top" src="/images/profile.png" alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{notes.notes.topic}}</h5>
+                        <video style="width: 15rem;" class="text-center"
+                            src="/note/videos/{{notes.notes.topic}}.mp4"></video>
+                        <a href="#" class="btn btn-danger mt-3"
+                            onclick="videoClick('{{notes.notes.date}}','{{notes.notes.month}}','{{notes.notes.year}}', '{{name.username}}','{{name.name}}', '{{name.rollno}}'), window.open('/note/videos/{{notes .notes.topic}}.mp4')">
+                            View
+                        </a>
+                        <p class="mt-3">Updated on {{notes.notes.date}}/{{notes.notes.month}}/{{notes.notes.year}}</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 mt-4 mb-4 text-center">
+                <h3 class="h3">Note</h3>
+                <div class="card bg-primary mt-5 mx-auto" style="width: 18rem;">
+                    {{!-- <img class="card-img-top" src="/images/profile.png" alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{notes.notes.topic}}</h5>
+
+                        <a href="#" class="btn btn-danger mt-3"
+                            onclick="window.open('/note/notes/{{notes.notes.topic}}.pdf')">
+                            View
+                        </a>
+                        <p class="mt-3">Updated on {{notes.notes.date}}/{{notes.notes.month}}/{{notes.notes.year}}</p>
+                    </div>
+                </div>
+            </div>
+
+            {{/if}}
+
+            {{#if assignment}}
+            <div class="col-lg-4 mt-4 mb-4 text-center">
+                <h3 class="h3">Assignment</h3>
+                <div class="card bg-primary mt-5 mx-auto" style="width: 18rem;">
+                    {{!-- <img class="card-img-top" src="/images/profile.png" alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{assignment.assignment.topic}}</h5>
+
+                        <a href="#" class="btn btn-danger mt-3"
+                            onclick="window.open('/assignments/tutor/{{assignment.assignment.topic}}.pdf')">
+                            View
+                        </a>
+                        <p class="mt-3 mb-5">Updated on {{assignment.assignment.date}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if link}}
+            <div class="col-lg-4 mt-5 mb-5 text-center">
+                <h3 class="h3">YouTube</h3>
+                <div class="card bg-primary mt-5 mb-5 mx-auto" style="width: 18rem;">
+                    {{!-- <img class="card-img-top" src="/images/profile.png" alt="Card image cap"> --}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{assignment.assignment.topic}}</h5>
+
+                        <a href="{{notes.notes.link}}" class="btn btn-danger mt-3">
+                            View
+                        </a>
+                        <p class="mt-3">Updated on {{notes.notes.date}}/{{notes.notes.month}}/{{notes.notes.year}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>
+<script>
+    function videoClick(date, month, year, username, name, rollno) {
+        $.ajax({
+            url: '/addAttendance',
+            method: 'post',
+            data: {
+                date: date,
+                month: month,
+                year: year,
+                name: name,
+                username: username,
+                rollno: rollno,
+                videoView: true,
+            },
+            success: (response) => {
+                if (response.status) {
+                    console.log('enthokke')
+                    alert(response)
+                    location.href = '/today-task'
+                }
+            }
+        })
+    }
+
+
+</script>

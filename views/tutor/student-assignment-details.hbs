@@ -1,0 +1,135 @@
+<style>
+    body{
+        background-image: url('/Background_Images/yellow.jpg');
+        background-size: cover;
+        
+        background-position: center center;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    h3 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 30px;
+        color: black;
+    }
+
+    label {
+        font-size: xx-large;
+    }
+
+    th {
+        font-size: xx-large;
+        font-weight: 800;
+    }
+
+    td {
+        font-size: x-large;
+        font-weight: 700;
+    }
+
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+        font-size: large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        width: 200px;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
+</style>
+<section>
+    <div class="container mt-5">
+        <h2 class="text-center mt-5 pt-5 mb-2">Student Details</h2>
+        <div class="row">
+            <div class="col-md-6 mt-5 text-center">
+                <img style="border-radius: 150px;" src="/student-profile/{{studentDetails.name}}.jpg" alt="">
+            </div>
+
+            <div class="col-md-6 mt-5 pt-5">
+                <label for="">Name :</label>
+                <label for="">{{studentDetails.name}}</label><br>
+
+                <label for="">Roll No :</label>
+                <label for=""> {{studentDetails.rollno}}</label><br>
+
+                <label for="">Mobile :</label>
+                <label for=""> {{studentDetails.mobile}}</label><br>
+
+                <label for="">Email :</label>
+                <label for=""> {{studentDetails.email}}</label>
+            </div>
+    
+            <div class="col-md-12">
+                <h3 class="text-center mt-5 pt-5 mb-5">Assignment</h3>
+                <table id="myTable" class="table text-white text-center mt-5">
+                    <thead class="bg-info">
+                        <tr>
+                            <th>Topic</th>
+                            <th>Date</th>
+                            <th>File</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each assignment}}
+                        <tr class="bg-info">
+                            <td>{{this.assignment.topic}}</td>
+                            <td>{{this.assignment.date}}</td>
+                            <td>
+                                <a href=""
+                                    onclick="window.open('/assignments/student/{{../studentDetails.username}}.{{this.assignment.topic}}.pdf')">
+                                    <img style="width: 40px;" src="/images/file-outline-with-text-lines.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-12">
+                <h3 class="text-center mt-5 pt-5 mb-4">Attendance</h3>
+                <table id="" class="table text-white text-center mt-5">
+                    <thead class="bg-info">
+                        <tr>
+                            <th>Date</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each attendance}}
+                        <tr class="bg-info">
+                            <td>{{this.date}}</td>
+                            <td>{{this.status}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+</script>

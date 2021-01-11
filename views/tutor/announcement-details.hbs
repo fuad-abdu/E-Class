@@ -1,0 +1,93 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        background-position: center center;
+        font-family: monospace;
+    } 
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    h3 {
+        font-size: 30px;
+        color: black;
+    }
+
+    .div {
+        padding-top: 15px;
+        margin: auto;
+        height: 50px;
+        width: 230px;
+        background: rgb(255, 197, 208);
+        font-size: larger;
+    }
+
+    p {
+        font-size: larger;
+    }
+    .card-title{
+        font-size: larger;
+    }
+    .card-header{
+        font-size: x-large;
+    }
+</style>
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center ">Announcement Details</h2>
+        <div class="row">
+            <div class="col-md-12 mt-5 pt-3">
+                <h3 class="text-center">{{announcement.message}}.</h3>
+                <p class="text-center mt-3">{{announcement.description}}</p>
+            </div>
+
+            {{#if pdf}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-danger  mb-3" style="max-width: 18rem;">
+                    <div class="card-header">PDF </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/announcement/pdf/{{announcement.message}}.pdf')"
+                            class="card-title text-white">Click Here</a>
+                        {{!-- <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk of the
+                            card's content.</p> --}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if mp4}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-warning  mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Video </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/announcement/video/{{announcement.message}}.mp4')"
+                            class="card-title text-white">Click Here</a>
+                        {{!-- <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk of the
+                            card's content.</p> --}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if jpg}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">PDF </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/announcement/pdf/{{announcement.message}}.pdf')"
+                            class="card-title text-white">Click Here</a>
+                        {{!-- <p class="card-text">Some quick example text to build on the card title and make up the
+                            bulk of the
+                            card's content.</p> --}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

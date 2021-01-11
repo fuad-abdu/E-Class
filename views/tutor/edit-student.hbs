@@ -1,0 +1,296 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    } 
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 200px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 40%;
+        height: 40%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-header {
+
+        padding: 2px 16px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+    .modal-footer {
+        height: 60px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .input {
+        margin-top: 25px;
+        margin-left: 10px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #rad {}
+
+    label {
+        font-size: 25px;
+        font-weight: initial;
+    }
+
+    h1 {
+        margin-top: 100px;
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+        margin-bottom: -80px;
+    }
+
+    .img {
+        width: 260px;
+    }
+
+    #name {
+        margin-left: 46px;
+        margin-top: 30px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #address {
+        margin-left: 1px;
+        height: 60px;
+        margin-top: 30px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #roll {
+        margin-left: 3px;
+        margin-top: 30px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #mob {
+        margin-left: 14px;
+        margin-top: 30px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #mail {
+        margin-left: 28px;
+        margin-top: 30px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    #rad {
+        margin-left: 40px;
+        margin-top: 20px;
+        height: 26px;
+        width: 26px;
+        font-size: 0px;
+    }
+
+    .gen {
+        margin-right: -5px;
+    }
+
+    .btn {
+        width: 100px;
+        font-size: x-large;
+    }
+
+    .btn:hover {
+        background: rgb(20, 19, 19);
+        color: #fff;
+    }
+
+    .div {
+        width: 100%;
+        border: 0;
+        height: 230px;
+        padding: 30px;
+        margin-top: 10px;
+        
+    }
+
+    #username {
+        margin: auto;
+        background: rgba(0, 0, 0, 0.32);
+        color: #fff;
+        height: 40px;
+        width: 100%;
+        margin-bottom: 23px;
+        font-size: 20px;
+        outline: none;
+        border: rgba(0, 0, 0, 0.32);
+    }
+
+    #password {
+        background: rgba(0, 0, 0, 0.32);
+        color: #fff;
+        height: 40px;
+        width: 100%;
+        font-size: 20px;
+        outline: none;
+        border: rgba(0, 0, 0, 0.32);
+        ;
+    }
+</style>
+
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center">Edit Student</h2>
+        <form action="/edit-student/{{studentDetails._id}}" enctype="multipart/form-data" method="POST">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    {{!-- <img class="img mt-5 pt-3" src="/images/ear-paint-head-person-cartoon-removebg-preview.png"
+                        alt=""> --}}
+                    <label for="file">
+                        <img id="profile-pic" alt="Profile picture" src="/student-profile/{{studentDetails.name}}.jpg"
+                        style="width: 300px; border-radius: 200px; margin-top: 100px;" />
+                    </label>
+                    <h3>
+                        Your profile picture
+                    </h3>
+
+                    <input type="file" id="file" class="form-control" required name="file" onchange="viewImage(event)" accept="image/*">
+                </div>
+
+                <div class="col-md-6 mt-5 pt-4">
+                    <label for="">Name :</label>
+                    <input type="text" class="input" name="name" value="{{studentDetails.name}}" id="name" required><br>
+                    <label class="gen" for="">Gender :</label>
+                    <input type="radio" name="radio" id="rad" value="male" required>
+                    <label for="">Male</label>
+                    <input type="radio" name="radio" id="rad" value="female" required>
+                    <label for="">Female</label><br>
+                    <label for="">Role No :</label>
+                    <input type="number" name="rollno" value="{{studentDetails.rollno}}" id="roll" required><br>
+                    <label for="">Mobile :</label>
+                    <input type="tel" name="mobile" value="{{studentDetails.mobile}}" id="mob" required><br>
+                    <label for="">Email :</label>
+                    <input type="email" name="email" value="{{studentDetails.email}}" id="mail" required><br>
+                    <label for="">Address :</label>
+                    <input type="text" name="address" value="{{studentDetails.address}}" id="address" required><br>
+                </div>
+
+                <div class="col-lg-6 mt-5">
+                    <div class="div bg-warning mt-5">
+                        <label for="" class="user">UserName :</label>
+                        <input type="text" class="input" name="username" value=" {{studentDetails.username}}"
+                            id="username" required><br>
+                        <label for="" class="pass">Password :</label>
+                        <input type="text" name="password" value=" {{studentDetails.password }}" id="password" required><br>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-5 text-center mb-5">
+                    <button type="submit" class="btn btn-success mt-3 mr-2"
+                        onclick="alert('Edited Successfuly')">Save</button>
+                    <a href="/student-details"><button class="btn btn-danger mt-3 ml-2">Cancel</button></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    function viewImage(event) {
+        document.getElementById('profile-pic').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

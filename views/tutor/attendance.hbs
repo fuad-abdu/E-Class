@@ -1,0 +1,178 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        {{!-- background-repeat: no-repeat; --}}
+        background-position: center center;
+        font-family: monospace;
+    } 
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    select {
+        font-size: larger;
+        padding-left: 2px;
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    th {
+        font-weight: bold;
+        font-size: xx-large;
+    }
+
+    td {
+        font-size: x-large;
+    }
+
+    .btn {
+        border-radius: 20px;
+        width: 100px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+</style>
+
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center">Attendance</h2>
+        <div class="row">
+            <div class="col-md-12 text-center mt-5">
+                <form action="/student-attendance" method="POST">
+                    <select name="date" id="day">
+                        <option value="{{date}}">{{date}}</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select name="month" id="month">
+                        <option value="{{mon}}">{{month}}</option>
+                        <option value="1">January </option>
+                        <option value="2">February </option>
+                        <option value="3">March </option>
+                        <option value="4">April </option>
+                        <option value="5">May </option>
+                        <option value="6">June </option>
+                        <option value="7">July </option>
+                        <option value="8">August </option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select onchange="date()" name="year" id="year">
+                        <option value="{{year}}">{{year}}</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <button type="submit" class="btn btn-danger">Search</button>
+                </form>
+            </div>
+            <div class="col-md-12 mt-5">
+                <table class="table text-center">
+                    <thead class="bg-warning">
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Name</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each present}}
+                        <tr class="bg-warning">
+                            <td>{{this.rollno}}</td>
+                            <td>{{this.name}}</td>
+                            <td>P</td>
+                        </tr>
+                        {{/each}}
+                        {{#each absent}}
+                        <tr class="bg-warning">
+                            <td>{{this.rollno}}</td>
+                            <td>{{this.name}}</td>
+                            <td>A</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    {
+        {
+            !-- function date() {
+                var day = document.getElementById('day').value;
+                var month = document.getElementById('month').value;
+                var year = document.getElementById('year').value;
+
+                console.log(day, month, year);
+
+                $.ajax({
+                    url: '/student-attendance',
+                    method: 'get',
+                    data: {
+                        date: day,
+                        month: month,
+                        year: year
+                    },
+                    success: (response) => {
+                        if (response.attendance) {
+                            console.log('hahaha')
+                            location.href = '/student-attendance'
+                        }
+
+
+                    }
+                })
+            }
+
+            function viewIt(attendance) {
+                console.log(attendance.report)
+                alert('addf')
+                $.ajax({
+                    url: '/attendace',
+                    method: 'post',
+                    data: {
+                        attendance: attendance
+                    },
+                    success: (response) => {
+                        location.href = '/attendace'
+                    }
+                })
+            } --}
+    }
+</script>

@@ -1,0 +1,159 @@
+<style>
+     body{
+        background-image: url('/Background_Images/light_blue.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    h3 {
+        font-size: 30px;
+        color: black;
+    }
+
+    label {
+        font-size: x-large;
+        margin-top: 10px;
+    }
+
+    input {
+        font-size: 20px;
+        height: 40px;
+        width: 300px;
+        outline: none;
+        border: none;
+    }
+
+    .form-control {
+        width: 300px;
+        margin-left: 21%;
+    }
+
+    .form {
+        color: #fff;
+        margin: auto;
+        width: 450px;
+        height: 270px;
+        background: rgb(224, 173, 62);
+        padding: 5%
+    }
+
+    thead {
+        font-size: xx-large;
+        color: #fff;
+        font-weight: 900;
+    }
+
+    tbody {
+        font-size: x-large;
+        font-weight: 600;
+    }
+    .btn{
+        margin-top: 10px;
+    }
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+        font-size: large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <h2 class="text-center mt-5 pt-5">Assignments</h2>
+        <div class="row">
+            <div class="col-md-6  mt-2">
+                <div class="form bg-danger mt-5 pt-4">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <h3 class="text-center text-white mb-2" style="font-size:xx-large;">Add Assignment</h3>
+                        <label for="">Topic :</label>
+                        <input type="text" name="topic" id="topic"><br>
+                        <label for="" id="fileid">File :</label>
+                        <input class="form-control" type="file" name="file" id="file" accept="application/pdf"><br>
+                        <div class="text-center">
+                            <button type="submit" id="sendNotification" class="btn btn-success">UPLOAD</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table text-center mt-5">
+                    <thead class="bg-warning">
+                        <tr>
+                            <th>Topic</th>
+                            <th>File</th>
+                            <th>Date</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                        {{#each assignment}}
+                        <tr class="bg-warning">
+                            <td class="text-danger">{{this.assignment.topic}}</td>
+                            {{!-- <td><a
+                                    href="/assignments/tutor/{{this.assignment.topic}}">{{this.assignment.topic}}.pdf</a>
+                            </td> --}}
+                            <td><a href="#"
+                                    onclick="window.open('/assignments/tutor/{{this.assignment.topic}}.pdf')">{{this.assignment.topic}}.pdf</a>
+                            </td>
+                            <td class="text-success">{{this.assignment.date}}</td>
+                            <td>
+                                <a href="/delete-assignment/{{this._id}}" onclick="alert('Are You Sure')">
+                                    <img style="width: 50px; margin-left: 10px;" src="/images/1814090-64.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+        integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"
+        integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ=="
+        crossorigin="anonymous"></script>
+
+<script>
+    var socket = io("http://localhost:3000");
+    $("#sendNotification").click(function(){
+        let topic = $("#topic").val();
+        socket.emit("sendNotification", {
+            "topic" :  topic
+        });
+    });
+</script>

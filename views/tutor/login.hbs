@@ -1,0 +1,48 @@
+<style>
+    body {
+        font-family: 'Catamaran', sans-serif;
+        font-size: 100%;
+        background: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        min-height: 100vh;
+        text-align: center;
+    }
+</style>
+
+<section class="bg ">
+    <a href="/"><img class="backImg" src="https://image.flaticon.com/icons/png/512/16/16116.png" alt=""></a>
+    <h1>Tutor Login </h1>
+    <div class="w3ls-login box">
+        <img src="images/logo.png" alt="logo_img" />
+        <!-- form starts here -->
+        <form action="/tutor-login" method="post">
+            {{#if loginErr}}
+            <p class="error">Invalid Password or Username</p>
+            {{/if}}
+            <div class="agile-field-txt">
+                <input type="text" name="username" placeholder="User Name" required="" />
+            </div>
+            <div class="agile-field-txt">
+                <input type="password" name="password" placeholder="Password" required="" id="myInput" />
+            </div>
+            <div class="w3ls-bot">
+                <input type="submit" value="LOGIN">
+            </div>
+        </form>
+    </div>
+    <!-- //form ends here -->
+</section>
+
+<script>
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>

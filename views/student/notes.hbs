@@ -1,0 +1,159 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_green.jpg');
+        background-size: cover;
+        background-position: center center;
+        font-family: Monospace;
+    }
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: white;
+    }
+
+    label {
+        font-size: larger;
+        margin-top: 5px;
+    }
+
+
+    .form-control {
+        width: 300px;
+        margin-left: 15%;
+    }
+
+    .form {
+        color: #fff;
+        margin: auto;
+        width: 450px;
+        height: 250px;
+        background: rgb(224, 173, 62);
+        padding: 5%
+    }
+
+    thead {
+        font-size: xx-large;
+        font-weight: 900;
+    }
+
+    tbody {
+        font-size: x-large;
+        font-weight: 600;
+    }
+
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        font-weight: bold;
+        color: white;
+        font-size: x-large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <h2 class="text-center mt-5 pt-5 mb-5 pb-2">Notes</h2>
+        <div class="row">
+            {{!-- <div class="col-md-6  mt-5 pt-4">
+
+            </div> --}}
+            <div class="col-md-12">
+                {{!-- <input type="text" class="" id="myInput" onkeyup="myFunction()" placeholder="Search for Topic.."
+                    title="Type in a topic"> --}}
+                <table id="myTable" class="table text-center mt-5 pt-3 mb-3">
+                    <thead class="bg-info text-white">
+                        <tr class="header">
+                            <th>Topic</th>
+                            <th>Note</th>
+                            <th>Video</th>
+                            <th>Youtube</th>
+                            <th>Date & Time</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each notes}}
+                        <tr class="bg-warning">
+                            <td class="text-danger">{{this.notes.topic}}</td>
+                            <td><a class="text-success" href=""
+                                    onclick="window.open('/note/notes/{{this.notes.topic}}.pdf')">{{this.notes.topic}}.pdf</a>
+                            </td>
+                            <td><a href=""
+                                    onclick="window.open('/note/videos/{{this.notes.topic}}.mp4'), addAttendance('{{../name.name}}','{{../name._id}}', '{{this.notes.date}}','{{this.notes.time}}')">{{this.notes.topic}}.mp4</a>
+                            </td>
+                            {{#if this.notes.link}}
+                            <td>
+                                <a class="text-light" href="{{this.notes.link}}">Click here</a>
+                            </td>
+                            {{else}}
+                            <td class="text-light">
+                                No Data
+                            </td>
+                            {{/if}}
+                            <td class="text-secondary">{{this.notes.date}}/{{this.notes.month}}/{{this.notes.year}} , {{this.notes.time}}</td>
+                            <td>
+                                <a href="/note/notes/{{this.notes.topic}}.pdf">
+                                    <img style="width: 50px;" src="/images/icloud-download.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function addAttendance(id, date, time) {
+        var d = new Date()
+        var month = d.getMonth() + 1;
+        var hour = d.getHours()
+        var minute = d.getMinutes()
+
+
+        $.ajax({
+            url: '/addAttendance',
+            method: 'post',
+            data: {
+                studentId: id,
+                uploadDate: date,
+                uploadTime: time,
+                seenDate: d.getDate() + '/' + month + '/' + d.getFullYear(),
+                seenTime: hour + ':' + minute
+            },
+            success: (response) => {
+                if (response.status) {
+                    //    alert('success')
+                    //   location.href = '/student'
+                    //} else {
+                    //    console.log(response.error)
+                    //    alert('Invaid OTP code')
+                    //
+                    console.log('enthokke')
+                    alert(response)
+                }
+            }
+        })
+    }
+</script>

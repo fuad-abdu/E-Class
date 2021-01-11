@@ -1,0 +1,336 @@
+<style>
+    body {
+        background-image: url('/Background_Images/blue.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 200px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 40%;
+        height: 40%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-header {
+
+        padding: 2px 16px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+    .modal-footer {
+        height: 60px;
+        background-color: #332d2d;
+        color: white;
+    }
+
+    body {
+            {
+                {
+                 !-- background-image: linear-gradient(to left, #284877, #2675a3, #008793, #15f098, #a8eb12);
+                --
+            }
+        }
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        margin-top: 25px;
+        margin-left: 10px;
+        height: 40px;
+        width: 265px;
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 25px;
+        font-weight: initial;
+    }
+
+    h1 {
+        margin-top: 100px;
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+        margin-bottom: -80px;
+    }
+
+    .img {
+        border: 5px solid white;
+        width: 300px;
+        border-radius: 200px;
+        margin-top: 100px;
+    }
+
+    #name {
+        margin-left: 45px;
+    }
+
+    #job {
+        margin-left: 58px;
+    }
+
+    #class {
+        margin-left: 30px;
+    }
+
+    #address {
+        margin-left: 1px;
+        height: 60px;
+    }
+
+    #pin {
+        margin-left: 50px;
+    }
+
+    #mob {
+        margin-left: 11px;
+    }
+
+    #email {
+        margin-left: 22px;
+    }
+
+    .btn1 {
+        font-size: 25px;
+        width: 100px;
+        margin-bottom: 60px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .btn {
+        width: 120px;
+    }
+
+    //
+    #profile-pic {
+        margin-top: 100px;
+        margin-right: 20px;
+        /* If you want to crop the image to a certain size, use something like this */
+        width: 100px;
+        height: 100px;
+    }
+
+    #file {
+        display: none;
+    }
+    .profile-pic {
+        position: relative;
+        display: inline-block;
+    }
+
+    .profile-pic:hover .edit {
+        display: block;
+    }
+
+    .edit {
+        background: rgb(235, 235, 235);
+        border:  4px solid;
+        width: 80px;
+        margin: auto;
+        position: absolute;
+        right: 35%;
+        top: 55%;
+        display: none;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <h1>Edit Profile</h1>
+        <form action="/edit-profile" enctype="multipart/form-data" method="POST">
+            <div class="row mt-5">
+                <div class="col-lg-6 text-center mt-2 pt-2">
+                    <label for="file">
+                        <div class="profile-pic">
+                            <img id="profile-pic" class="img" src="/tutor-profile/profile.jpg" alt=""
+                                style="width: 300px; border-radius: 200px;">
+                            <div class="edit">
+                                <img class="text-center" src="https://img.icons8.com/android/48/000000/edit.png" />
+                            </div>
+                        </div>
+                    </label>
+                    <h2 class="text-white">
+                        Your profile picture
+                    </h2>
+
+                    <input type="file" class="text-white" id="file" name="file" onchange="viewImage(event)"
+                        accept="image/*">
+                </div>
+
+                <div class="col-lg-6 text-center text-white pt-5 mt-5">
+                    <label for="">Name :</label>
+                    <input type="text" name="name" value="{{details.details.name}}" id="name"><br>
+                    <label for="">Job :</label>
+                    <input type="text" name="job" value="{{details.details.job}}" id="job"><br>
+                    <label for="">Class :</label>
+                    <input type="text" name="class" value="{{details.details.class}}" id="class"><br>
+                    <label for="">Address :</label>
+                    <input type="text" name="address" value="{{details.details.address}}" id="address"><br>
+                    <label for="">Pin :</label>
+                    <input type="text" name="pin" value="{{details.details.pin}}" id="pin"><br>
+                    <label for="">Mobile :</label>
+                    <input type="text" name="mobile" value="{{details.details.mobile}}" id="mob"><br>
+                    <label for="">Email :</label>
+                    <input type="text" name="email" value="{{details.details.email}}" id="email"><br>
+                </div>
+
+                <div class="col-md-12 text-center mt-5 pt-3">
+                    <button type="submit" id="myBtn" class="btn1 btn btn-success">Save</button>
+                    <a href="/tutor-profile" class="btn1 btn btn-danger">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+<section>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Message box</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body text-center pt-4">
+                <p>Are you sure ?</p>
+
+            </div>
+            <div class="modal-footer text-center">
+                <button class="btn btn-primary" onclick="funclick()" id="mybtn1">OK</button>
+                <button id="cross" class="btn btn-danger">Cancel </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script>
+    function viewImage(event) {
+        document.getElementById('profile-pic').src = URL.createObjectURL(event.target.files[0])
+    }
+    function funclick() {
+        alert('Edited Successfully')
+        location.href = '/tutor-profile'
+        modal.style.display = "none";
+    }
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    var button = document.getElementById("cross")
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    button.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

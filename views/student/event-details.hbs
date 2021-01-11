@@ -1,0 +1,92 @@
+<style>
+    body {
+        background-image: url('/Background_Images/yellow.jpg');
+        background-size: cover;
+        font-family: monospace;
+    }
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    h3 {
+        font-size: 30px;
+        color: black;
+    }
+
+    .div {
+        padding-top: 15px;
+        margin: auto;
+        height: 50px;
+        width: 230px;
+        background: rgb(255, 197, 208);
+        font-size: larger;
+    }
+
+    p {
+        font-size: larger;
+    }
+
+    .progress {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: larger;
+    }
+
+    .card-header {
+        font-size: x-large;
+    }
+</style>
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center ">Event Details</h2>
+        <div class="row">
+            <div class="col-md-12 mt-5 pt-3">
+                <h3 class="text-center">{{event.event}}</h3>
+                <p class="text-center mt-3">Topic : {{event.topic}}</p>
+                <p class="text-center mt-3">Conducting by : {{event.conductingBy}}</p>
+            </div>
+
+            {{#if pdf}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-danger  mb-3" style="max-width: 18rem;">
+                    <div class="card-header">PDF </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/event/pdf/{{event.topic}}.pdf')"
+                            class="card-title text-white">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if video}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-success  mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Video </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/event/video/{{event.topic}}.mp4')"
+                            class="card-title text-white">Click Here</a>
+                        
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if image}}
+            <div class="col-md-4 text-center mt-3">
+                <div class="card mx-auto text-white bg-info  mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Image </div>
+                    <div class="card-body">
+                        <a href="" onclick="window.open('/event/image/{{event.topic}}.jpg')"
+                            class="card-title text-white">Click Here</a>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

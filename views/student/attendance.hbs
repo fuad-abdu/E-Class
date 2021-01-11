@@ -1,0 +1,151 @@
+<style>
+    body{
+        background-image: url('/Background_Images/dark_blue.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }   
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 50px;
+        color: black;
+    }
+
+    .label-1 {
+        color: white;
+        font-family: Monospace;
+        margin-top: 40px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .btn {
+        width: 90px;
+        height: 45px;
+        font-size: 18px;
+        margin-left: 10px;
+        border-radius: 14px;
+    }
+
+    .label-2 {
+        margin-left: -6px;
+        font-family: Monospace;
+        font-weight: bold;
+        font-size: xx-large;
+        color: rgb(253, 0, 0);
+    }
+
+    select {
+        font-size: large;
+        padding-left: 2px;
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    th {
+        font-family: Monospace;
+        font-weight: bold;
+        font-size: xx-large;
+    }
+
+    td {
+        font-family: Monospace;
+        font-size: xx-large;
+        color: white;
+    }
+
+    .attendance{
+        font-size: 40px;
+    }
+</style>
+<section>
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center ">Attendance</h2>
+        <div class="row">
+            <div class="col-md-12 text-center mt-5">
+                <form action="/attendance" method="POST">
+                    <select name="month" id="month">
+                        <option value="{{mon}}">{{month}}</option>
+                        <option value="1">January </option>
+                        <option value="2">February </option>
+                        <option value="3">March </option>
+                        <option value="4">April </option>
+                        <option value="5">May </option>
+                        <option value="6">June </option>
+                        <option value="7">July </option>
+                        <option value="8">August </option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select onchange="date()" name="year" id="year">
+                        <option value="{{year}}">{{year}}</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select>
+                    {{#if name}}
+                    <input type="text" name="username" value="{{name.username}}" id="" hidden>
+                    {{else}}
+                    <input type="text" name="username" value="{{user.username}}" id="" hidden>
+                    {{/if}}
+                    <button class="btn btn-danger">Search</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="mt-2">
+                    <label class="label-1" for="">Total Days :</label>
+                    {{#each attendance}}
+                    <label class="label-2" for="">{{this.no_of_days}}</label>
+                    {{/each}}
+
+                    <br>
+
+                    <label class="label-1" for="">Present :</label>
+                    {{#each attendance}}
+                    <label class="label-2" for="">{{this.PresentCount}}</label>
+                    {{/each}}
+
+                    <br>
+
+                    <label class="label-1" for="">Absent :</label>
+                    {{#each attendance}}
+                    <label class="label-2" for="">{{this.AbsentCount}}</label>
+                    {{/each}}
+
+                    <br>
+
+                    <label class="label-1" for="">Presentage :</label>
+                    {{#each attendance}}
+                    <label class="label-2" for=""> {{this.percentage}}</label>
+                    {{/each}}
+
+
+                    {{!-- <label class="label-1" for="">Class Avarage :</label>
+                    <label class="label-2" for=""> %</label> --}}
+                </div>
+            </div>
+            <div class="col-md-12 mt-5">
+                <table  class="table bg-warning text-center">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each attendance}}
+                        <tr>
+                            <td>{{this.date}}</td>
+                            <td class="attendance text-success">{{this.status}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,126 @@
+<style>
+    body {
+        background-image: url('/Background_Images/home_bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: monospace;
+    }
+
+    footer {
+        width: 100%;
+        height: 83px;
+        margin-top: 47px;
+    }
+
+    .card,
+    .card-img-top {
+        border-radius: 20px;
+    }
+
+    h4 {
+        font-size: 45px;
+    }
+
+    .row {
+        font-size: 18px;
+    }
+
+    #footer {
+        bottom: 0;
+        width: 100%;
+        height: 90px;
+        z-index: 1;
+    }
+
+    .card-text {
+        font-weight: 700;
+    }
+
+    a {
+        color: darkblue;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: smaller;
+        color: gray;
+    }
+</style>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12 ">
+
+                <div class="card" style="width:450px; height: 410px;">
+                    <img style="opacity: 0.5;" class="card-img-top"
+                        src="https://miro.medium.com/max/5087/1*ZVYpEAxnObj7kWNnyKr_nQ.jpeg" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title text-center">Announcements</h4>
+                        {{#each announcement}}
+                        <p class="card-text mt-4"><a href="/announcement-detail/{{this._id}}">* {{this.message}}</a>
+                            <span>( {{this.date}} )</span>
+                        </p>
+                        {{/each}}
+                        {{!-- <a href="#" class="btn btn-primary">View</a> --}}
+                    </div>
+                </div>
+            </div>
+            <div class=" col-lg-6 col-12 mb-2">
+                <div class="card " style="width:450px; height: 410px;">
+                    <img style="opacity: 0.3; width:450px; height: 410px;" class="card-img-top"
+                        src="https://www.adweek.com/wp-content/uploads/2018/06/Events.jpg" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title text-center">Events</h4>
+                        {{#each events}}
+                        <p class="card-text mt-4"><a href="/event-detail/{{this._id}}">* {{this.event}}</a> </p>
+                        {{/each}}
+                        {{!-- <a href="#" class="btn btn-primary mt-3">View</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-dark" id="footer">
+    <div class="container">
+        <div class="row text-center text-white">
+            <div class="col-md-12 mt-1">
+                <p>Contact Details</p>
+            </div>
+            <div class="col-md-4 col-6 mt-2">
+                <h5>Principal : 9876543210</h5>
+            </div>
+            <div class="col-md-4 col-6 mt-2">
+                <h5>HOD : 9876543210</h5>
+            </div>
+            <div class="col-md-4 col-12 mt-2">
+                <h5>Tutor : 9023428921</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{{!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"
+        integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ=="
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"
+        integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ=="
+        crossorigin="anonymous"></script>
+
+<script>
+    var socket = io("http://localhost:3000");
+    socket.on("sendNotification", function(details){
+        console.log('details : ',details);
+        $.notify("New Assingnment\nPlease Do Very Fast\nTopic : "+details.topic,{
+            style: "bootstrap",
+            autoHide: false,
+            className: "success"
+        });
+    });
+</script>

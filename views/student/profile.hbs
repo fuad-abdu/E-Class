@@ -1,0 +1,61 @@
+<style>
+    body {
+        background-image: url('/Background_Images/blue.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-family: Monospace;
+    }
+
+    h2 {
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 60px;
+    }
+
+    label {
+        font-family: Monospace;
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    .img {
+        width: 260px;
+    }
+
+    .btn {
+        margin-top: 17px;
+        font-size: 20px;
+        width: 100px;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <h2 class="text-center mt-5 pt-5">Profile</h2>
+        <div class="row mt-5">
+            <div class="col-md-6 text-center mt-2">
+                <img class="img" src="/student-profile/{{profile.name}}.jpg" alt=""
+                    style="width: 300px; border-radius: 200px; border: 4px solid white;">
+            </div>
+
+            <div class="col-md-6 mt-2">
+                <label class="text-white" for="">Name : </label>
+                <label class="text-warning" name="name" for="">{{profile.name}}</label><br>
+                <label class="text-white" for="">Gender : </label>
+                <label class="text-warning" name="job" for="">{{profile.gender}}</label><br>
+                <label class="text-white" for="">RollNo :</label>
+                <label class="text-warning" name="class" for="">{{profile.rollno}}</label><br>
+                <label class="text-white" for="">Address :</label>
+                <label class="text-warning" name="address" for="">{{profile.address}}</label><br>
+                <label class="text-white" for="">Mobile :</label>
+                <label class="text-warning" name="mobile" for="">{{profile.mobile}}</label><br>
+                <label class="text-white" for="">Email :</label>
+                <label class="text-warning" name="email" for="">{{profile.email}}</label>
+                <label class="text-white" for="">UserName :</label>
+                <label class="text-warning" name="pin" for="">{{profile.username}}</label><br>
+                <label class="text-white" for="">Password :</label>
+                <label class="text-warning" name="email" for="">{{profile.password}}</label>
+            </div>
+        </div>
+    </div>
+</section>
