@@ -5,7 +5,7 @@ const state = {
 
 module.exports.connect = function (done) {
     const dbname = 'ClassManagementSystem'
-    const url = "mongodb://localhost:27017"
+    const url = "mongodb://localhost:27017/test"
 
     MongoClient.connect(url, (err, data) => {
         if (err) return done(err)
