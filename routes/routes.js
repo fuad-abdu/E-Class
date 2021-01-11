@@ -340,6 +340,7 @@ module.exports = function (io) {
       if (err) console.log(err);
     })
     // res.redirect('/tutor-assignment')
+  })
 
   router.post('/student-assignment', async (req, res) => {
     console.log(req.body.topic, req.files.file);
