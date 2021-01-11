@@ -330,15 +330,15 @@ module.exports = function (io) {
     let topic = req.body.topic
     let file = req.files.file
     if (topic && file) {
-      let assignment = await tutorHelpers.UploadAssignment(topic)
+      let assignment = await tutorHelpers.UploadAssignment(topic);
+      file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
+        if (err) console.log(err);
+      })
+      alert("Successfully added Assignment");
       res.redirect('/tutor-assignment')
     } else {
       res.redirect('/tutor-assignment')
     }
-
-    file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
-      if (err) console.log(err);
-    })
     // res.redirect('/tutor-assignment')
   })
 
@@ -348,15 +348,15 @@ module.exports = function (io) {
     let file = req.files.file
     let details = req.session.student
     if (topic && file) {
-      let assignment = await studentHelpers.UploadAssignment(topic, details.username, details._id)
+      let assignment = await studentHelpers.UploadAssignment(topic, details.username, details._id);
+      file.mv('./public/assignments/student/' + details.username + '.' + topic + '.pdf', (err, done) => {
+        if (err) console.log(err);
+      })
+      alert("Successfully added Assignment");
+      res.redirect('/student-assignment');
     } else {
-      res.redirect('/student-assignment')
+      res.redirect('/student-assignment');
     }
-
-    file.mv('./public/assignments/student/' + details.username + '.' + topic + '.pdf', (err, done) => {
-      if (err) console.log(err);
-    })
-    res.redirect('/student-assignment')
   })
 
   router.get('/tutor-notes', verifyTutorLogin, async (req, res) => {
