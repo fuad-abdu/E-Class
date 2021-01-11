@@ -37,6 +37,31 @@
         font-size: 20px;
         margin-left: 10px;
     }
+
+    .dataTables_paginate a {
+
+        background: #ddd !important;
+        border-color: #ddd !important;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_processing,
+    .dataTables_wrapper .dataTables_paginate {
+        color: #fff;
+        font-size: large;
+        margin-bottom: 9px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        outline: none;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #fff;
+        margin-left: 3px;
+    }
 </style>
 
 <section>
@@ -102,7 +127,7 @@
                 </form>
             </div>
             <div class="col-md-12 mt-5">
-                <table class="table text-center">
+                <table id="myTable" class="table text-center">
                     <thead class="bg-warning">
                         <tr>
                             <th>Roll No</th>
