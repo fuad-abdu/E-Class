@@ -330,17 +330,16 @@ module.exports = function (io) {
     let topic = req.body.topic
     let file = req.files.file
     if (topic && file) {
-      let assignment = await tutorHelpers.UploadAssignment(topic);
-      file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
-        if (err) console.log(err);
-      })
-      // window.alert("Successfully added Assignment");
+      let assignment = await tutorHelpers.UploadAssignment(topic)
       res.redirect('/tutor-assignment')
     } else {
       res.redirect('/tutor-assignment')
     }
+
+    file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
+      if (err) console.log(err);
+    })
     // res.redirect('/tutor-assignment')
-  })
 
   router.post('/student-assignment', async (req, res) => {
     console.log(req.body.topic, req.files.file);
@@ -352,11 +351,10 @@ module.exports = function (io) {
       file.mv('./public/assignments/student/' + details.username + '.' + topic + '.pdf', (err, done) => {
         if (err) console.log(err);
       })
-      alert("Successfully added Assignment");
-      res.redirect('/student-assignment');
     } else {
-      res.redirect('/student-assignment');
+      res.redirect('/student-assignment')
     }
+    res.redirect('/student-assignment')
   })
 
   router.get('/tutor-notes', verifyTutorLogin, async (req, res) => {
