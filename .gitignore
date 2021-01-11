@@ -2,6 +2,10 @@ public/note/*
 
 public/assignments/*
 
+public/announcement/*
+
+public/event/*
+
 # Logs
 logs
 *.log
