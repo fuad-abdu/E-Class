@@ -69,7 +69,7 @@ app.use(session({
 
 db.connect((err) => {
   if (err) {
-    console.log("err : ", err);
+    console.log(err);
   } else {
     console.log('connected');
   }
