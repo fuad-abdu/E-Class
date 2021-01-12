@@ -79,13 +79,12 @@
     progress {
         width: 280px;
         height: 40px;
-        margin-left: 210px;
         margin-top: 20px;
     }
 
     #message {
+        color: #fff;
         font-size: larger;
-        margin-left: 210px;
     }
 
     .rad {
@@ -105,6 +104,12 @@
 
     #upload-progress.visible {
         visibility: visible;
+    }
+
+    .btn {
+
+        width: 100px;
+        font-size: x-large;
     }
 </style>
 
@@ -142,17 +147,23 @@
                         <input class="form-control" type="file" accept="application/pdf" name="pdf" id="pdf">
                     </div>
 
-                    <label class="label-2" for="">Video : </label>
-                    <input class="form-control" type="file" accept="video/*" name="video" id="video">
-                    <progress id="upload-progress"></progress><br>
-                    <p id="message"></p>
+                    <div class="">
+                        <label class="label-2" for="">Video : </label>
+                        <input class="form-control" type="file" accept="video/*" name="video" id="video">
+                        <progress class="mx-auto" id="upload-progress"></progress><br>
+                        <p id="message"></p>
+                    </div>
 
                     <div class="">
                         <label class="label-3" for="">Image : </label>
                         <input class="form-control" type="file" onchange="viewImage(event)" accept="image/*"
                             name="image">
-                        <img src="" class="" style="margin-top: 150px; width: 50%; margin-bottom: 20px;" id="image"
+                        <img src="" style="width: 50%; margin-bottom: 20px;" id="image"
                             alt=""><br>
+                    </div>
+
+                    <div class="text-center mb-5">
+                        <button type="submit" class="btn btn-danger">Save</button>
                     </div>
                 </form>
             </div>
