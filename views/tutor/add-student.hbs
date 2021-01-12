@@ -17,14 +17,16 @@
         background: rgb(253, 224, 224);
         border: none;
         outline: none;
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        margin-top: 25px;
     }
 
     .input {
-        margin-right: 10px;
+        {{!-- margin-right: 10px; --}}
         margin-top: 25px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
+        
     }
 
     #rad {}
@@ -47,49 +49,7 @@
         width: 260px;
     }
 
-    #name {
-        margin-left: 30px;
-        margin-top: 30px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
-    }
-
-    #address {
-        margin-left: -10px;
-        height: 60px;
-        margin-top: 30px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
-    }
-
-    #roll {
-        margin-left: 30px;
-        margin-top: 30px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
-    }
-
-    #mob {
-        margin-left: 3px;
-        margin-top: 30px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
-    }
-
-    #mail {
-        margin-left: 17px;
-        margin-top: 30px;
-        height: 40px;
-        width: 265px;
-        font-size: 20px;
-    }
-
     #rad {
-        margin-left: 40px;
         margin-top: 20px;
         height: 26px;
         width: 26px;
@@ -127,7 +87,7 @@
     }
 
     .gen {
-        margin-right: 10px;
+        margin-top: 25px;
     }
 
     .btn {
@@ -194,7 +154,8 @@
                         </div>
                     </label>
                     <h3>
-                        Student profile picture
+                        Student profile picture <br>
+                        Tap to Change Profile
                     </h3>
 
                     <input type="file" id="file" class="mt-4" name="file" onchange="viewImage(event)" accept="image/*">
@@ -202,20 +163,20 @@
 
                 <div class="col-lg-6">
                     <div class=" mt-5 pt-4 mx-auto">
-                        <label for="">Name :</label>
+                        {{!-- <label for="">Name :</label> --}}
                         <input type="text" class="input" name="name" value="" id="name" placeholder=" Name" required><br>
-                        <label class="gen" for="">Gender :</label>
+                        <label class="gen" for="">Gender :</label><br>
                         <input type="radio" name="radio" id="rad" value="male">
                         <label for="">Male</label>
                         <input type="radio" name="radio" id="rad" value="female">
                         <label for="">Female</label><br>
-                        <label for="">Role :</label>
+                        {{!-- <label for="">Role :</label> --}}
                         <input type="number" name="rollno" value="" id="roll" placeholder=" Roll" required><br>
-                        <label for="">Mobile :</label>
+                        {{!-- <label for="">Mobile :</label> --}}
                         <input type="tel" name="mobile" value="" id="mob" placeholder=" Mob" required><br>
-                        <label for="">Email :</label>
+                        {{!-- <label for="">Email :</label> --}}
                         <input type="email" name="email" value="" id="mail" placeholder=" E-mail" required><br>
-                        <label for="">Address :</label>
+                        {{!-- <label for="">Address :</label> --}}
                         <input type="text" name="address" value="" id="address" placeholder=" Address" required><br>
                     </div>
                 </div>
