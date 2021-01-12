@@ -925,7 +925,7 @@ module.exports = function (io) {
       },
       "redirect_urls": {
         "return_url": "http://localhost:3000/success/" + amount,
-        "cancel_url": "http://localhost:3000/cancel"
+        "cancel_url": "http://localhost:3000/add-event"
       },
       "transactions": [{
         "item_list": {
