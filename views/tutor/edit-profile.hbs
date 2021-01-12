@@ -110,12 +110,12 @@
     }
 
     input {
+        margin: 10px;
         border: none;
         outline: none;
         margin-top: 25px;
-        margin-left: 10px;
         height: 40px;
-        width: 265px;
+        width: 90%;
         font-size: 20px;
     }
 
@@ -139,7 +139,7 @@
         margin-top: 100px;
     }
 
-    #name {
+    {{!-- #name {
         margin-left: 45px;
     }
 
@@ -166,7 +166,7 @@
 
     #email {
         margin-left: 22px;
-    }
+    } --}}
 
     .btn1 {
         font-size: 25px;
@@ -238,20 +238,20 @@
                 </div>
 
                 <div class="col-lg-6 text-center text-white pt-5 mt-5">
-                    <label for="">Name :</label>
-                    <input type="text" name="name" value="{{details.details.name}}" id="name"><br>
-                    <label for="">Job :</label>
-                    <input type="text" name="job" value="{{details.details.job}}" id="job"><br>
-                    <label for="">Class :</label>
-                    <input type="text" name="class" value="{{details.details.class}}" id="class"><br>
-                    <label for="">Address :</label>
-                    <input type="text" name="address" value="{{details.details.address}}" id="address"><br>
-                    <label for="">Pin :</label>
-                    <input type="text" name="pin" value="{{details.details.pin}}" id="pin"><br>
-                    <label for="">Mobile :</label>
-                    <input type="text" name="mobile" value="{{details.details.mobile}}" id="mob"><br>
-                    <label for="">Email :</label>
-                    <input type="text" name="email" value="{{details.details.email}}" id="email"><br>
+                    {{!-- <label for="">Name :</label> --}}
+                    <input type="text" name="name" value="{{details.details.name}}" id="name" placeholder=" Name"><br>
+                    {{!-- <label for="">Job :</label> --}}
+                    <input type="text" name="job" value="{{details.details.job}}" id="job" placeholder=" Job"><br>
+                    {{!-- <label for="">Class :</label> --}}
+                    <input type="text" name="class" value="{{details.details.class}}" id="class" placeholder=" Class"><br>
+                    {{!-- <label for="">Address :</label> --}}
+                    <input type="text" name="address" value="{{details.details.address}}" id="address" placeholder=" Address"><br>
+                    {{!-- <label for="">Pin :</label> --}}
+                    <input type="text" name="pin" value="{{details.details.pin}}" id="pin" placeholder=" Pin"><br>
+                    {{!-- <label for="">Mobile :</label> --}}
+                    <input type="text" name="mobile" value="{{details.details.mobile}}" id="mob" placeholder=" Mobile"><br>
+                    {{!-- <label for="">Email :</label> --}}
+                    <input type="text" name="email" value="{{details.details.email}}" id="email" placeholder=" Email"><br>
                 </div>
 
                 <div class="col-md-12 text-center mt-5 pt-3">
