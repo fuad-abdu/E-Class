@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6 col-12 mt-2">
 
-                <div class="card" style="width:400px; height: 410px;">
+                <div class="card mx-auto" style="width:350px; height: 350px;">
                     <img style="opacity: 0.5;" class="card-img-top"
                         src="https://miro.medium.com/max/5087/1*ZVYpEAxnObj7kWNnyKr_nQ.jpeg" alt="Card image">
                     <div class="card-img-overlay">
@@ -17,15 +17,15 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-lg-6 col-12 mb-2 mt-2">
-                <div class="card " style="width:400px; height: 410px;">
-                    <img style="opacity: 0.3; width:450px; height: 410px;" class="card-img-top"
+            <div class="col-lg-6 col-12 mb-5 mt-2">
+                <div class="card mx-auto" style="width:350px; height: 350px;">
+                    <img style="opacity: 0.3; width:350px; height: 350px;" class="card-img-top"
                         src="https://www.adweek.com/wp-content/uploads/2018/06/Events.jpg" alt="Card image">
                     <div class="card-img-overlay">
                         <h4 class="card-title text-center">Events</h4>
-                        {{#each events}}
+                        
                         <p class="card-text mt-4"><a href="/event-details/{{this._id}}">* {{this.event}}</a> </p>
-                        {{/each}}
+                        
                         {{!-- <a href="#" class="btn btn-primary mt-3">View</a> --}}
                     </div>
                 </div>
@@ -35,18 +35,18 @@
 </section>
 
 <footer class="bg-dark" id="footer">
-    <div class="container">
+    <div class="">
         <div class="row text-center text-white">
-            <div class="col-md-12 mt-1">
+            <div class="col-md-12 mt-1 text-center">
                 <p>Contact Details</p>
             </div>
-            <div class="col-md-4 col-6 mt-2">
+            <div class="col-md-4 col-6 mt-2 text-center">
                 <h5>Principal : 9876543210</h5>
             </div>
-            <div class="col-md-4 col-6 mt-2">
+            <div class="col-md-4 col-6 mt-2 text-center">
                 <h5>HOD : 9876543210</h5>
             </div>
-            <div class="col-md-4 col-12 mt-2">
+            <div class="col-md-4 col-12 mt-2 text-center">
                 <h5>Tutor : 9023428921</h5>
             </div>
         </div>
@@ -75,7 +75,7 @@
     }
 
     h4 {
-        font-size: 45px;
+        font-size: 40px;
     }
 
     .row {
