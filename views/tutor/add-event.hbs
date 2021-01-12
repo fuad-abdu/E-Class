@@ -112,7 +112,6 @@
     <div class="container mt-5">
         <h2 class="text-center mt-5 pt-5">Events</h2>
         <div class="row">
-            
             <div class="col-md-6">
                 <form action="/addEvent" method="POST" enctype="multipart/form-data" class="mt-5 pt-4">
                     <div class="">
@@ -127,6 +126,16 @@
                     <div class="">
                         <label class="label" for="">Topic :</label>
                         <input class="topic mx-auto" type="text" name="topic" id="topic" required>
+                    </div>
+                    <div class="">
+                        <label class="radio-inline ml-3">
+                            <input type="radio" class="rad" name="payment" value="free" id="free" required>
+                            Free
+                        </label>
+                        <label class="radio-inline ml-3">
+                            <input type="radio" class="rad" name="payment" value="paid" id="paid" required>
+                            Paid
+                        </label>
                     </div>
                     <div class="">
                         <label class="label-1" for="">PDF : </label>
@@ -145,36 +154,8 @@
                         <img src="" class="" style="margin-top: 150px; width: 50%; margin-bottom: 20px;" id="image"
                             alt=""><br>
                     </div>
-
-
+                </form>
             </div>
-            
-            <div class="col-md-6 mt-5 pt-5">
-                <div class="checkout">
-                    <div class="bg-warning border border-primary mt-5 mb-5"
-                        style="border:solid; margin: auto; height: 250px; width: 300px; padding-top: 10px; padding-left: 10px;">
-                        <h5 class="text-center">Paid or Free</h5>
-
-                        <hr>
-
-                        <div>
-                            <label class="radio-inline ml-3">
-                                <input type="radio" class="rad" name="payment" value="free" id="free" required>
-                                Free
-                            </label>
-                        </div>
-                        <div>
-                            <label class="radio-inline ml-3">
-                                <input type="radio" class="rad" name="payment" value="paid" id="paid" required>
-                                Paid
-                            </label>
-                        </div>
-
-                        <button href="#" type="submit" class="btn1 btn btn-danger mr-4 float-right">Checkout</button>
-                    </div>
-                </div>
-            </div>
-            </form>
         </div>
     </div>
     </div>
