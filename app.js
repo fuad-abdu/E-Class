@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 //   next();
 // });
 var store = new MongoDBStore({
-  uri: process.env.MONGO_URL,
+  uri: "mongodb://localhost:27017/connect_mongodb_session_test",
   collection: 'mySessions'
 });
 
