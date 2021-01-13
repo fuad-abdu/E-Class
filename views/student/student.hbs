@@ -13,13 +13,21 @@
         margin-top: 47px;
     }
 
-    .card,
-    .card-img-top {
+    .card{
+        width: 90%;
+        height: 300px;
+        margin-top: 13%;
         border-radius: 20px;
     }
 
-    h4 {
-        font-size: 45px;
+    .card-img-top{
+        width: 100%;
+        height: 300px;
+        border-radius: 20px;
+    }
+
+   h4 {
+        font-size: 30px;
     }
 
     .row {
@@ -46,13 +54,31 @@
         font-size: smaller;
         color: gray;
     }
-</style>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-12 ">
+    .attendance{
+        margin-top: 90px;
+        width: 100%;
+        height: 70px;
+    }
+    h2{
+        font-size: xx-large;
+        font-weight: bold;
 
-                <div class="card" style="width:450px; height: 410px;">
+    }
+</style>
+
+<section>
+    <div class="attendance bg-danger">
+        {{#if status}}
+        <h2 class="text-center pt-3">Today is : <span class="text-success">Present</span></h2>
+        {{else}}
+        <h2 class="text-center pt-3">Today is : <span class="text-white">Absent</span></h2>
+        {{/if}}
+    </div>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card mx-auto">
                     <img style="opacity: 0.5;" class="card-img-top"
                         src="https://miro.medium.com/max/5087/1*ZVYpEAxnObj7kWNnyKr_nQ.jpeg" alt="Card image">
                     <div class="card-img-overlay">
@@ -66,9 +92,9 @@
                     </div>
                 </div>
             </div>
-            <div class=" col-lg-6 col-12 mb-2">
-                <div class="card " style="width:450px; height: 410px;">
-                    <img style="opacity: 0.3; width:450px; height: 410px;" class="card-img-top"
+            <div class="col-12 mb-5">
+                <div class="card mx-auto">
+                    <img style="opacity: 0.3;" class="card-img-top"
                         src="https://www.adweek.com/wp-content/uploads/2018/06/Events.jpg" alt="Card image">
                     <div class="card-img-overlay">
                         <h4 class="card-title text-center">Events</h4>

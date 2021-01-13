@@ -6,7 +6,7 @@ const state = {
 
 module.exports.connect = function (done) {
     const dbname = 'ClassManagementSystem'
-    const url = process.env.MONGO_URL || "mongodb://localhost:27017/ClassManagementSystem";
+    const url = "mongodb://localhost:27017/ClassManagementSystem";
 
     MongoClient.connect(url, {useUnifiedTopology:true}, (err, data) => {
         if (err) return done(err)
