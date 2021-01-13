@@ -6,7 +6,7 @@ const state = {
 
 module.exports.connect = function (done) {
     const dbname = 'ClassManagementSystem'
-    const url = "mongodb://localhost:27017/";
+    const url = "mongodb+srv://fuadabdu:fuad6214@test.s5ote.mongodb.net/ClassManagementSystem?retryWrites=true&w=majority";
 
     MongoClient.connect(url, {useUnifiedTopology:true}, (err, data) => {
         if (err) return done(err)

@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 //   next();
 // });
 var store = new MongoDBStore({
-  uri: "mongodb://localhost:27017/ClassManagementSystem",
+  uri: "mongodb+srv://fuadabdu:fuad6214@test.s5ote.mongodb.net/ClassManagementSystem?retryWrites=true&w=majority",
   collection: 'mySessions'
 });
 
