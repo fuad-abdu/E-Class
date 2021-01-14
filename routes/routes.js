@@ -331,14 +331,14 @@ module.exports = function (io) {
     let file = req.files.file
     if (topic && file) {
       let assignment = await tutorHelpers.UploadAssignment(topic)
+      file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
+        if (err) console.log(err);
+      })
       res.redirect('/tutor-assignment')
     } else {
       res.redirect('/tutor-assignment')
     }
 
-    file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
-      if (err) console.log(err);
-    })
     // res.redirect('/tutor-assignment')
   })
 
