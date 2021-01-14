@@ -1,15 +1,20 @@
 <style>
-    body{
+    body {
         background-image: url('/Background_Images/yellow.jpg');
         background-size: cover;
-        
+
         background-position: center center;
         font-family: monospace;
     }
+
     h2 {
         font-family: Impact, Charcoal, sans-serif;
         font-size: 50px;
         color: black;
+    }
+
+    header {
+        z-index: 1;
     }
 
     h3 {
@@ -79,7 +84,7 @@
                 <label for="">Email :</label>
                 <label for=""> {{studentDetails.email}}</label>
             </div>
-    
+
             <div class="col-md-12">
                 <h3 class="text-center mt-5 pt-5 mb-5">Assignment</h3>
                 <table id="myTable" class=" table table-responsive text-white text-center mt-5">
