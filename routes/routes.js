@@ -336,7 +336,7 @@ module.exports = function (io) {
       res.redirect('/tutor-assignment')
     }
 
-    file.mv('/assignments/tutor/' + topic + '.pdf', (err, done) => {
+    file.mv('./public/assignments/tutor/' + topic + '.pdf', (err, done) => {
       if (err) console.log(err);
     })
     // res.redirect('/tutor-assignment')
