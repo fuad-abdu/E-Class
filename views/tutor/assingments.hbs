@@ -152,7 +152,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-    var socket = io("http://localhost:3000");
+    var socket = io("http://65.1.2.74");
     $("#sendNotification").click(function(){
         let topic = $("#topic").val();
         socket.emit("sendNotification", {

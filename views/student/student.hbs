@@ -141,7 +141,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-    var socket = io("http://localhost:3000");
+    var socket = io("http://65.1.2.74");
     socket.on("sendNotification", function(details){
         console.log('details : ',details);
         $.notify("New Assingnment\nPlease Do Very Fast\nTopic : "+details.topic,{
