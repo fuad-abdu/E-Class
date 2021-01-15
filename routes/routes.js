@@ -213,7 +213,7 @@ module.exports = function (io) {
   router.post('/edit-profile', async (req, res) => {
     let details = await tutorHelpers.updateProfile(req.body)
     console.log(req.body);
-    let image = req.files.file
+    let image = req.files.file;
     image.mv('./public/tutor-profile/profile.jpg', (err, done) => {
       if (err) console.log(err);
     })
