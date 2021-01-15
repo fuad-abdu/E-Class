@@ -95,9 +95,9 @@
                     <form action="/tutor-assignment" method="POST" enctype="multipart/form-data">
                         <h3 class="text-center text-white mb-2" style="font-size:xx-large;">Add Assignment</h3>
                         <label for="">Topic :</label>
-                        <input type="text" name="topic" id="topic"><br>
+                        <input type="text" name="topic" id="topic" required><br>
                         <label for="" id="fileid">File :</label>
-                        <input class="form-control" type="file" name="file" id="file" accept="application/pdf"><br>
+                        <input class="form-control" type="file" name="file" id="file" accept="application/pdf" required><br>
                         <div class="text-center">
                             <button type="submit" id="sendNotification" class="btn btn-success">UPLOAD</button>
                         </div>
