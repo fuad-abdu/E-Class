@@ -412,7 +412,6 @@ module.exports = function (io) {
       let topic = req.body.topic;
       let note = req.files.note;
 
-
       let notes = await tutorHelpers.UploadNote(req.body)
 
       video.mv('./public/note/videos/' + topic + '.mp4', (err, done) => {
@@ -421,7 +420,7 @@ module.exports = function (io) {
 
       note.mv('./public/note/notes/' + topic + '.pdf', (err, done) => {
         if (err) console.log(err);
-      })
+      })    
       console.log('undu');
       res.redirect('/tutor-notes')
 

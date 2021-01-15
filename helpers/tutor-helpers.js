@@ -169,9 +169,8 @@ module.exports = {
             time: hour + ':' + minute
         }
         return new Promise((resolve, reject) => {
-            db.get().collection(collection.TUTOR_NOTES).insertOne({ notes }).then((response) => {
-                resolve(response)
-            })
+            let note = db.get().collection(collection.TUTOR_NOTES).insertOne({ notes })
+            resolve(note)
         })
     },
 
