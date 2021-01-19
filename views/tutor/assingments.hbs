@@ -152,7 +152,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-    var socket = io("http://classroom.cohortcommunity.xyz");
+    var socket = io("https://classroom.cohortcommunity.xyz");
     $("#sendNotification").click(function(){
         let topic = $("#topic").val();
         socket.emit("sendNotification", {

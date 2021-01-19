@@ -141,7 +141,7 @@
         crossorigin="anonymous"></script>
 
 <script>
-    var socket = io("http://classroom.cohortcommunity.xyz");
+    var socket = io("https://classroom.cohortcommunity.xyz");
     socket.on("sendNotification", function(details){
         console.log('details : ',details);
         $.notify("New Assingnment\nPlease Do Very Fast\nTopic : "+details.topic,{
