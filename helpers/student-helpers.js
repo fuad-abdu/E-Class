@@ -1,5 +1,6 @@
 var db = require('../config/connection');
 var collection = require('../config/collection');
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 var objectId = require('mongodb').ObjectId;
 require('dotenv').config()
@@ -39,7 +40,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             var req = unirest('POST', 'https://d7networks.com/api/verifier/send')
                 .headers({
-                    'Authorization': `Token ${"a36e5f4149268995ee22bc853bf9de726b1c0f09"}`
+                    'Authorization': `Token ${process.env.Token}`
                 })
                 .field('mobile', '91' + phone)
                 .field('sender_id', 'SMSINFO')
@@ -57,7 +58,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             var req = unirest('POST', 'https://d7networks.com/api/verifier/verify')
                 .headers({
-                    'Authorization': `Token ${"a36e5f4149268995ee22bc853bf9de726b1c0f09"}`
+                    'Authorization': `Token ${process.env.Token}`
                 })
                 .field('otp_id', otp_id)
                 .field('otp_code', otp)
