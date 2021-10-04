@@ -24,7 +24,8 @@ module.exports = function (io) {
     if (req.session.tutor) {
       next()
     } else {
-      res.redirect('/tutor-login')
+      next()
+//       res.redirect('/tutor-login')
     }
   }
   var verifyStudentLogin = (req, res, next) => {
